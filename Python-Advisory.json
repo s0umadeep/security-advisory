@@ -1,0 +1,1233 @@
+[
+    {
+        "Summary": "urlparse does not correctly handle schemes",
+        "CVEs": {
+            "CVE-2023-24329": {
+                "Description": "An issue in the urllib.parse component of Python before v3.11 allows attackers to bypass blocklisting methods by supplying a URL that starts with blank characters.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2023-24329"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urlparse-scheme.html",
+        "PublicReleaseDate": "2022-11-12",
+        "Vulnerable version": "3.10  3.7  3.8  3.9",
+        "Files_updated": "3.11.1"
+    },
+    {
+        "Summary": "Buffer overflow in the _sha3 module in Python 3.10 and older",
+        "CVEs": {
+            "CVE-2022-37454": {
+                "Description": "The Keccak XKCP SHA-3 reference implementation before fdc6fef has an integer overflow and resultant buffer overflow that allows attackers to execute arbitrary code or eliminate expected cryptographic properties. This occurs in the sponge function interface.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2022-37454"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/sha3-buffer-overflow.html",
+        "PublicReleaseDate": "2022-10-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.16  3.8.16  3.9.16  3.10.9"
+    },
+    {
+        "Summary": "Slow IDNA decoding with large strings",
+        "CVEs": {
+            "CVE-2022-45061": {
+                "Description": "An issue was discovered in Python before 3.11.1. An unnecessary quadratic algorithm exists in one path when processing some inputs to the IDNA (RFC 3490) decoder, such that a crafted, unreasonably long name being presented to the decoder could lead to a CPU denial of service. Hostnames are often supplied by remote servers that could be controlled by a malicious actor; in such a scenario, they could trigger excessive CPU consumption on the client attempting to make use of an attacker-supplied supposed hostname. For example, the attack payload could be placed in the Location header of an HTTP response with status code 302. A fix is planned in 3.11.1, 3.10.9, 3.9.16, 3.8.16, and 3.7.16.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2022-45061"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/slow-idna-large-strings.html",
+        "PublicReleaseDate": "2022-10-19",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.16  3.8.16  3.9.16  3.10.9  3.11.1"
+    },
+    {
+        "Summary": "Linux specific local privilege escalation via the multiprocessing forkserver start method",
+        "CVEs": {
+            "CVE-2022-42919": {
+                "Description": "Python 3.9.x before 3.9.16 and 3.10.x before 3.10.9 on Linux allows local privilege escalation in a non-default configuration. The Python multiprocessing library, when used with the forkserver start method on Linux, allows pickles to be deserialized from any user in the same machine local network namespace, which in many system configurations means any user on the same machine. Pickles can execute arbitrary code. Thus, this allows for local user privilege escalation to the user that any forkserver process is running as. Setting multiprocessing.util.abstract_sockets_supported to False is a workaround. The forkserver start method for multiprocessing is not the default start method. This issue is Linux specific because only Linux supports abstract namespace sockets. CPython before 3.9 does not make use of Linux abstract namespace sockets by default. Support for users manually specifying an abstract namespace socket was added as a bugfix in 3.7.8 and 3.8.3, but users would need to make specific uncommon API calls in order to do that in CPython before 3.9.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2022-42919"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/multiprocessing-abstract-socket.html",
+        "PublicReleaseDate": "2022-09-23",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.9.16  3.10.9  3.11.0"
+    },
+    {
+        "Summary": "Prevent DoS by large str-int conversions",
+        "CVEs": {
+            "CVE-2020-10735": {
+                "Description": "A flaw was found in python. In algorithms with quadratic time complexity using non-binary bases, when using int(\"text\"), a system could take 50ms to parse an int string with 100,000 digits and 5s for 1,000,000 digits (float, decimal, int.from_bytes(), and int() for binary bases 2, 4, 8, 16, and 32 are not affected). The highest threat from this vulnerability is to system availability.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-10735"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/large-int-str-dos.html",
+        "PublicReleaseDate": "2022-08-08",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.14  3.8.14  3.9.14  3.10.7  3.11.0"
+    },
+    {
+        "Summary": "Windows: vulnerable zlib 1.2.11",
+        "CVEs": {
+            "CVE-2018-25032": {
+                "Description": "zlib before 1.2.12 allows memory corruption when deflating (i.e., when compressing) if the input has many distant matches.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-25032"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/update-zlib-1-2-11.html",
+        "PublicReleaseDate": "2022-04-01",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.14  3.8.14  3.9.13  3.10.5"
+    },
+    {
+        "Summary": "Windows: vulnerable bzip2 1.0.6",
+        "CVEs": {
+            "CVE-2016-3189": {
+                "Description": "Use-after-free vulnerability in bzip2recover in bzip2 1.0.6 allows remote attackers to cause a denial of service (crash) via a crafted bzip2 file, related to block ends set to before the start of the block.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-3189"
+            },
+            "CVE-2019-12900": {
+                "Description": "BZ2_decompress in decompress.c in bzip2 through 1.0.6 has an out-of-bounds write when there are many selectors.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-12900"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/update-bzip2-1-0-6.html",
+        "PublicReleaseDate": "2021-07-02",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.13  3.8.13  3.9.11  3.10.3"
+    },
+    {
+        "Summary": "CVE-2013-0340 Billion Laughs fixed in Expat 2.4.0",
+        "CVEs": {
+            "CVE-2013-0340": {
+                "Description": "expat 2.1.0 and earlier does not properly handle entities expansion unless an application developer uses the XML_SetEntityDeclHandler function, which allows remote attackers to cause a denial of service (resource consumption), send HTTP requests to intranet servers, or read arbitrary files via a crafted XML document, aka an XML External Entity (XXE) issue. NOTE: it could be argued that because expat already provides the ability to disable external entity expansion, the responsibility for resolving this issue lies with application developers; according to this argument, this entry should be REJECTed, and each affected application would need its own CVE.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-0340"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expat-billion-laughs.html",
+        "PublicReleaseDate": "2021-06-11",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.15  3.7.12  3.8.12  3.9.7  3.10.0"
+    },
+    {
+        "Summary": "CVE-2021-3737: urllib HTTP client possible infinite loop on a 100 Continue response",
+        "CVEs": {
+            "CVE-2021-3737": {
+                "Description": "A flaw was found in python. An improperly handled HTTP response in the HTTP client code of python may allow a remote attacker, who controls the HTTP server, to make the client script enter an infinite loop, consuming CPU time. The highest threat from this vulnerability is to system availability.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-3737"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-100-continue-loop.html",
+        "PublicReleaseDate": "2021-05-03",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.14  3.7.11  3.8.11  3.9.6  3.10.0"
+    },
+    {
+        "Summary": "urllib.parse should sanitize urls containing ASCII newline and tabs.",
+        "CVEs": {
+            "CVE-2022-0391": {
+                "Description": "A flaw was found in Python, specifically within the urllib.parse module. This module helps break Uniform Resource Locator (URL) strings into components. The issue involves how the urlparse method does not sanitize input and allows characters like '\\r' and '\\n' in the URL path. This flaw allows an attacker to input a crafted URL, leading to injection attacks. This flaw affects Python versions prior to 3.10.0b1, 3.9.5, 3.8.11, 3.7.11 and 3.6.14.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2022-0391"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib_parse_newline_tabs.html",
+        "PublicReleaseDate": "2021-04-18",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.14  3.7.11  3.8.11  3.9.5  3.10.0"
+    },
+    {
+        "Summary": "ipaddress leading zeros in IPv4 address",
+        "CVEs": {
+            "CVE-2021-29921": {
+                "Description": "In Python before 3,9,5, the ipaddress library mishandles leading zero characters in the octets of an IP address string. This (in some situations) allows attackers to bypass access control that is based on IP addresses.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-29921"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ipaddress-ipv4-leading-zeros.html",
+        "PublicReleaseDate": "2021-03-30",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.8.12  3.9.5  3.10.0"
+    },
+    {
+        "Summary": "ftplib should not use the host from the PASV response",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ftplib-pasv.html",
+        "PublicReleaseDate": "2021-02-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.14  3.7.11  3.8.9  3.9.3  3.10.0"
+    },
+    {
+        "Summary": "http.server: Open Redirection if the URL path starts with //",
+        "CVEs": {
+            "CVE-2021-28861": {
+                "Description": "** DISPUTED ** Python 3.x through 3.10 has an open redirection vulnerability in lib/http/server.py due to no protection against multiple (/) at the beginning of URI path which may leads to information disclosure. NOTE: this is disputed by a third party because the http.server.html documentation page states \"Warning: http.server is not recommended for production. It only implements basic security checks.\"",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-28861"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/http-server-redirection.html",
+        "PublicReleaseDate": "2021-02-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.14  3.8.14  3.9.14  3.10.6  3.11.0"
+    },
+    {
+        "Summary": "CVE-2021-3733: ReDoS in urllib.request",
+        "CVEs": {
+            "CVE-2021-3733": {
+                "Description": "There's a flaw in urllib's AbstractBasicAuthHandler class. An attacker who controls a malicious HTTP server that an HTTP client (such as web browser) connects to, could trigger a Regular Expression Denial of Service (ReDOS) during an authentication request with a specially crafted payload that is sent by the server to the client. The greatest threat that this flaw poses is to application availability.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-3733"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-basic-auth-regex2.html",
+        "PublicReleaseDate": "2021-01-30",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.14  3.7.11  3.8.10  3.9.5  3.10.0"
+    },
+    {
+        "Summary": "Information disclosure via pydoc getfile",
+        "CVEs": {
+            "CVE-2021-3426": {
+                "Description": "There's a flaw in Python 3's pydoc. A local or adjacent attacker who discovers or is able to convince another local or adjacent user to start a pydoc server could access the server and use it to disclose sensitive information belonging to the other user that they would not normally be able to access. The highest risk of this flaw is to data confidentiality. This flaw affects Python versions before 3.8.9, Python versions before 3.9.3 and Python versions before 3.10.0a7.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-3426"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/pydoc-getfile.html",
+        "PublicReleaseDate": "2021-01-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.14  3.7.11  3.8.9  3.9.3  3.10.0"
+    },
+    {
+        "Summary": "urllib parse_qsl(): Web cache poisoning - semicolon as a query args separator",
+        "CVEs": {
+            "CVE-2021-23336": {
+                "Description": "The package python/cpython from 0 and before 3.6.13, from 3.7.0 and before 3.7.10, from 3.8.0 and before 3.8.8, from 3.9.0 and before 3.9.2 are vulnerable to Web Cache Poisoning via urllib.parse.parse_qsl and urllib.parse.parse_qs by using a vector called parameter cloaking. When the attacker can separate query parameters using a semicolon (;), they can cause a difference in the interpretation of the request between the proxy (running with default configuration) and the server. This can result in malicious requests being cached as completely safe ones, as the proxy would usually not see the semicolon as a separator, and therefore would not include it in a cache key of an unkeyed parameter.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-23336"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-query-string-semicolon-separator.html",
+        "PublicReleaseDate": "2021-01-19",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.13  3.7.10  3.8.8  3.9.2  3.10.0"
+    },
+    {
+        "Summary": "ctypes: Buffer overflow in PyCArg_repr",
+        "CVEs": {
+            "CVE-2021-3177": {
+                "Description": "Python 3.x through 3.9.1 has a buffer overflow in PyCArg_repr in _ctypes/callproc.c, which may lead to remote code execution in certain Python applications that accept floating-point numbers as untrusted input, as demonstrated by a 1e300 argument to c_double.from_param. This occurs because sprintf is used unsafely.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2021-3177"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ctypes-buffer-overflow-pycarg_repr.html",
+        "PublicReleaseDate": "2021-01-16",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.13  3.7.10  3.8.8  3.9.2  3.10.0"
+    },
+    {
+        "Summary": "CJK codecs tests call eval() on content retrieved via HTTP",
+        "CVEs": {
+            "CVE-2020-27619": {
+                "Description": "In Python 3 through 3.9.0, the Lib/test/multibytecodec_support.py CJK codec tests call eval() on content retrieved via HTTP.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-27619"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/cjk-codec-download-eval.html",
+        "PublicReleaseDate": "2020-10-05",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.13  3.7.10  3.8.7  3.9.1  3.10.0"
+    },
+    {
+        "Summary": "[CVE-2020-14422] Hash collisions in IPv4Interface and IPv6Interface",
+        "CVEs": {
+            "CVE-2020-14422": {
+                "Description": "Lib/ipaddress.py in Python through 3.8.3 improperly computes hash values in the IPv4Interface and IPv6Interface classes, which might allow a remote attacker to cause a denial of service if an application is affected by the performance of a dictionary containing IPv4Interface or IPv6Interface objects, and this attacker can cause many dictionary entries to be created. This is fixed in: v3.5.10, v3.5.10rc1; v3.6.12; v3.7.9; v3.8.4, v3.8.4rc1, v3.8.5, v3.8.6, v3.8.6rc1; v3.9.0, v3.9.0b4, v3.9.0b5, v3.9.0rc1, v3.9.0rc2.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-14422"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ipaddress-hash-collisions.html",
+        "PublicReleaseDate": "2020-06-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.12  3.7.9  3.8.4  3.9.0"
+    },
+    {
+        "Summary": "http.client: HTTP Header Injection in the HTTP method",
+        "CVEs": {
+            "CVE-2020-26116": {
+                "Description": "http.client in Python 3.x before 3.5.10, 3.6.x before 3.6.12, 3.7.x before 3.7.9, and 3.8.x before 3.8.5 allows CRLF injection if the attacker controls the HTTP request method, as demonstrated by inserting CR and LF control characters in the first argument of HTTPConnection.request.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-26116"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/http-header-injection-method.html",
+        "PublicReleaseDate": "2020-02-10",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.12  3.7.9  3.8.5  3.9.0"
+    },
+    {
+        "Summary": "CVE-2020-8315: Unsafe DLL loading in getpathp.c on Windows 7",
+        "CVEs": {
+            "CVE-2020-8315": {
+                "Description": "In Python (CPython) 3.6 through 3.6.10, 3.7 through 3.7.6, and 3.8 through 3.8.1, an insecure dependency load upon launch on Windows 7 may result in an attacker's copy of api-ms-win-core-path-l1-1-0.dll being loaded and used instead of the system's copy. Windows 8 and later are unaffected.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-8315"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/unsafe-dll-load-windows-7.html",
+        "PublicReleaseDate": "2020-01-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.11  3.7.7  3.8.2  3.9.0"
+    },
+    {
+        "Summary": "Email header injection in Address objects",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/email-address-header-injection.html",
+        "PublicReleaseDate": "2019-12-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.11  3.7.8  3.8.4  3.9.0"
+    },
+    {
+        "Summary": "Infinite loop in tarfile module while opening a crafted file",
+        "CVEs": {
+            "CVE-2019-20907": {
+                "Description": "In Lib/tarfile.py in Python through 3.8.3, an attacker is able to craft a TAR archive leading to an infinite loop when opened by tarfile.open, because _proc_pax lacks header validation.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-20907"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/tarfile-pax-dos.html",
+        "PublicReleaseDate": "2019-12-10",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.12  3.7.9  3.8.5  3.9.0"
+    },
+    {
+        "Summary": "Remove newline characters from uu encoding methods",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/uu-encoding-newline.html",
+        "PublicReleaseDate": "2019-11-30",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.18  3.5.10  3.6.10  3.7.6  3.8.1  3.9.0"
+    },
+    {
+        "Summary": "urllib basic auth regex denial of service",
+        "CVEs": {
+            "CVE-2020-8492": {
+                "Description": "Python 2.7 through 2.7.17, 3.5 through 3.5.9, 3.6 through 3.6.10, 3.7 through 3.7.6, and 3.8 through 3.8.1 allows an HTTP server to conduct Regular Expression Denial of Service (ReDoS) attacks against a client because of urllib.request.AbstractBasicAuthHandler catastrophic backtracking.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-8492"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-basic-auth-regex.html",
+        "PublicReleaseDate": "2019-11-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.11  3.7.8  3.8.3  3.9.0"
+    },
+    {
+        "Summary": "Regular Expression Denial of Service in http.cookiejar",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/cookiejar-redos.html",
+        "PublicReleaseDate": "2019-11-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.18  3.5.10  3.6.10  3.7.6  3.8.1  3.9.0"
+    },
+    {
+        "Summary": "CVE-2019-18348: CRLF injection via the host part of the url passed to urlopen()",
+        "CVEs": {
+            "CVE-2019-18348": {
+                "Description": "An issue was discovered in urllib2 in Python 2.x through 2.7.17 and urllib in Python 3.x through 3.8.0. CRLF injection is possible if the attacker controls a url parameter, as demonstrated by the first argument to urllib.request.urlopen with \\r\\n (specifically in the host component of a URL) followed by an HTTP header. This is similar to the CVE-2019-9740 query string issue and the CVE-2019-9947 path string issue. (This is not exploitable when glibc has CVE-2016-10739 fixed.). This is fixed in: v2.7.18, v2.7.18rc1; v3.5.10, v3.5.10rc1; v3.6.11, v3.6.11rc1, v3.6.12; v3.7.8, v3.7.8rc1, v3.7.9; v3.8.3, v3.8.3rc1, v3.8.4, v3.8.4rc1, v3.8.5, v3.8.6, v3.8.6rc1.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-18348"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urlopen-host-http-header-injection.html",
+        "PublicReleaseDate": "2019-10-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.18  3.5.10  3.6.11  3.7.8  3.8.3  3.9.0"
+    },
+    {
+        "Summary": "Reflected XSS in DocXMLRPCServer",
+        "CVEs": {
+            "CVE-2019-16935": {
+                "Description": "The documentation XML-RPC server in Python through 2.7.16, 3.x through 3.6.9, and 3.7.x through 3.7.4 has XSS via the server_title field. This occurs in Lib/DocXMLRPCServer.py in Python 2.x, and in Lib/xmlrpc/server.py in Python 3.x. If set_server_title is called with untrusted input, arbitrary JavaScript can be delivered to clients that visit the http URL for this server.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-16935"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/docxmlrpcserver-xss.html",
+        "PublicReleaseDate": "2019-09-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.8  3.6.10  3.7.5  3.8.0"
+    },
+    {
+        "Summary": "ssl.match_hostname() ignores extra string after whitespace in IPv4 address",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-match_hostname-ipv4-trailing.html",
+        "PublicReleaseDate": "2019-07-01",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.4  3.8.0"
+    },
+    {
+        "Summary": "urlsplit does not handle NFKC normalization (second fix)",
+        "CVEs": {
+            "CVE-2019-10160": {
+                "Description": "A security regression of CVE-2019-9636 was discovered in python since commit d537ab0ff9767ef024f26246899728f0116b1ec3 affecting versions 2.7, 3.5, 3.6, 3.7 and from v3.8.0a4 through v3.8.0b1, which still allows an attacker to exploit CVE-2019-9636 by abusing the user and password parts of a URL. When an application parses user-supplied URLs to store cookies, authentication credentials, or other kind of information, it is possible for an attacker to provide specially crafted URLs to make the application locate host-related information (e.g. cookies, authentication data) and send them to a different host than where it should, unlike if the URLs had been correctly parsed. The result of an attack may vary based on the application.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-10160"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urlsplit-nfkc-normalization2.html",
+        "PublicReleaseDate": "2019-04-27",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.8  3.6.9  3.7.4  3.8.0"
+    },
+    {
+        "Summary": "urlsplit does not handle NFKC normalization",
+        "CVEs": {
+            "CVE-2019-9636": {
+                "Description": "Python 2.7.x through 2.7.16 and 3.x through 3.7.2 is affected by: Improper Handling of Unicode Encoding (with an incorrect netloc) during NFKC normalization. The impact is: Information disclosure (credentials, cookies, etc. that are cached against a given hostname). The components are: urllib.parse.urlsplit, urllib.parse.urlparse. The attack vector is: A specially crafted URL could be incorrectly parsed to locate cookies or authentication data and send that information to a different host than when parsed correctly. This is fixed in: v2.7.17, v2.7.17rc1, v2.7.18, v2.7.18rc1; v3.5.10, v3.5.10rc1, v3.5.7, v3.5.8, v3.5.8rc1, v3.5.8rc2, v3.5.9; v3.6.10, v3.6.10rc1, v3.6.11, v3.6.11rc1, v3.6.12, v3.6.9, v3.6.9rc1; v3.7.3, v3.7.3rc1, v3.7.4, v3.7.4rc1, v3.7.4rc2, v3.7.5, v3.7.5rc1, v3.7.6, v3.7.6rc1, v3.7.7, v3.7.7rc1, v3.7.8, v3.7.8rc1, v3.7.9.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-9636"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urlsplit-nfkc-normalization.html",
+        "PublicReleaseDate": "2019-03-06",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.7  3.6.9  3.7.3  3.8.0"
+    },
+    {
+        "Summary": "urllib module local_file:// scheme",
+        "CVEs": {
+            "CVE-2019-9948": {
+                "Description": "urllib in Python 2.x through 2.7.16 supports the local_file: scheme, which makes it easier for remote attackers to bypass protection mechanisms that blacklist file: URIs, as demonstrated by triggering a urllib.urlopen('local_file:///etc/passwd') call.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-9948"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-local-file-scheme.html",
+        "PublicReleaseDate": "2019-02-06",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.8  3.6.9  3.7.4  3.8.0"
+    },
+    {
+        "Summary": "TALOS-2018-0758 SSL CRL distribution points Denial of Service",
+        "CVEs": {
+            "CVE-2019-5010": {
+                "Description": "An exploitable denial-of-service vulnerability exists in the X509 certificate parser of Python.org Python 2.7.11 / 3.6.6. A specially crafted X509 certificate can cause a NULL pointer dereference, resulting in a denial of service. An attacker can initiate or accept TLS connections using crafted certificates to trigger this vulnerability.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-5010"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-crl-dps-dos.html",
+        "PublicReleaseDate": "2019-01-15",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.16  3.4.10  3.5.7  3.6.9  3.7.3  3.8.0"
+    },
+    {
+        "Summary": "http.cookiejar: Incorrect validation of path",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/cookie-path-check.html",
+        "PublicReleaseDate": "2019-01-03",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.4.10  3.5.7  3.6.9  3.7.3  3.8.0"
+    },
+    {
+        "Summary": "xml package does not obey ignore_environment",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/xml-pakage-ignore-environment.html",
+        "PublicReleaseDate": "2018-09-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.16  3.4.10  3.5.7  3.6.8  3.7.2  3.8.0"
+    },
+    {
+        "Summary": "pickle.load denial of service",
+        "CVEs": {
+            "CVE-2018-20406": {
+                "Description": "Modules/_pickle.c in Python before 3.7.1 has an integer overflow via a large LONG_BINPUT value that is mishandled during a \"resize to twice the size\" attempt. This issue might cause memory exhaustion, but is only relevant if the pickle format is used for serializing tens or hundreds of gigabytes of data. This issue is fixed in: v3.4.10, v3.4.10rc1; v3.5.10, v3.5.10rc1, v3.5.7, v3.5.7rc1, v3.5.8, v3.5.8rc1, v3.5.8rc2, v3.5.9; v3.6.10, v3.6.10rc1, v3.6.11, v3.6.11rc1, v3.6.12, v3.6.7, v3.6.7rc1, v3.6.7rc2, v3.6.8, v3.6.8rc1, v3.6.9, v3.6.9rc1; v3.7.1, v3.7.1rc1, v3.7.1rc2, v3.7.2, v3.7.2rc1, v3.7.3, v3.7.3rc1, v3.7.4, v3.7.4rc1, v3.7.4rc2, v3.7.5, v3.7.5rc1, v3.7.6, v3.7.6rc1, v3.7.7, v3.7.7rc1, v3.7.8, v3.7.8rc1, v3.7.9.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-20406"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/pickle-load-dos.html",
+        "PublicReleaseDate": "2018-09-13",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.4.10  3.5.7  3.6.7  3.7.1  3.8.0"
+    },
+    {
+        "Summary": "_elementree C accelerator doesn\u2019t call XML_SetHashSalt()",
+        "CVEs": {
+            "CVE-2018-14647": {
+                "Description": "Python's elementtree C accelerator failed to initialise Expat's hash salt during initialization. This could make it easy to conduct denial of service attacks against Expat by constructing an XML document that would cause pathological hash collisions in Expat's internal data structures, consuming large amounts CPU and RAM. The vulnerability exists in Python versions 3.7.0, 3.6.0 through 3.6.6, 3.5.0 through 3.5.6, 3.4.0 through 3.4.9, 2.7.0 through 2.7.15.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-14647"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/elementree-hash-salt.html",
+        "PublicReleaseDate": "2018-09-10",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.16  3.4.10  3.5.7  3.6.7  3.7.1  3.8.0"
+    },
+    {
+        "Summary": "email.utils.parseaddr mistakenly parse an email",
+        "CVEs": {
+            "CVE-2019-16056": {
+                "Description": "An issue was discovered in Python through 2.7.16, 3.x through 3.5.7, 3.6.x through 3.6.9, and 3.7.x through 3.7.4. The email module wrongly parses email addresses that contain multiple @ characters. An application that uses the email module and implements some kind of checks on the From/To headers of a message could be tricked into accepting an email address that should be denied. An attack may be the same as in CVE-2019-11340; however, this CVE applies to Python more generally.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-16056"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/email-parseaddr-domain.html",
+        "PublicReleaseDate": "2018-07-19",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.8  3.6.10  3.7.5  3.8.0"
+    },
+    {
+        "Summary": "Email folding function Denial-of-Service",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/email-fold-dos.html",
+        "PublicReleaseDate": "2018-05-16",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.6.9  3.7.4  3.8.0"
+    },
+    {
+        "Summary": "Buffer overflow vulnerability in os.symlink on Windows",
+        "CVEs": {
+            "CVE-2018-1000117": {
+                "Description": "Python Software Foundation CPython version From 3.2 until 3.6.4 on Windows contains a Buffer Overflow vulnerability in os.symlink() function on Windows that can result in Arbitrary code execution, likely escalation of privilege. This attack appears to be exploitable via a python script that creates a symlink with an attacker controlled name or location. This vulnerability appears to have been fixed in 3.7.0 and 3.6.5.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-1000117"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/buffer-overflow-os-symlink-windows.html",
+        "PublicReleaseDate": "2018-03-05",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.4.9  3.5.6  3.6.5  3.7.0"
+    },
+    {
+        "Summary": "difflib and poplib catastrophic backtracking",
+        "CVEs": {
+            "CVE-2018-1060": {
+                "Description": "python before versions 2.7.15, 3.4.9, 3.5.6rc1, 3.6.5rc1 and 3.7.0 is vulnerable to catastrophic backtracking in pop3lib's apop() method. An attacker could use this flaw to cause denial of service.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-1060"
+            },
+            "CVE-2018-1061": {
+                "Description": "python before versions 2.7.15, 3.4.9, 3.5.6rc1, 3.6.5rc1 and 3.7.0 is vulnerable to catastrophic backtracking in the difflib.IS_LINE_JUNK method.  An attacker could use this flaw to cause denial of service.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-1061"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/difflib-poplib-backtracking.html",
+        "PublicReleaseDate": "2018-03-02",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.15  3.4.9  3.5.6  3.6.5  3.7.0"
+    },
+    {
+        "Summary": "Python 2.7 readahead is not thread safe",
+        "CVEs": {
+            "CVE-2018-1000030": {
+                "Description": "Python 2.7.14 is vulnerable to a Heap-Buffer-Overflow as well as a Heap-Use-After-Free. Python versions prior to 2.7.14 may also be vulnerable and it appears that Python 2.7.17 and prior may also be vulnerable however this has not been confirmed. The vulnerability lies when multiply threads are handling large amounts of data. In both cases there is essentially a race condition that occurs. For the Heap-Buffer-Overflow, Thread 2 is creating the size for a buffer, but Thread1 is already writing to the buffer without knowing how much to write. So when a large amount of data is being processed, it is very easy to cause memory corruption using a Heap-Buffer-Overflow. As for the Use-After-Free, Thread3->Malloc->Thread1->Free's->Thread2-Re-uses-Free'd Memory. The PSRT has stated that this is not a security vulnerability due to the fact that the attacker must be able to run code, however in some situations, such as function as a service, this vulnerability can potentially be used by an attacker to violate a trust boundary, as such the DWF feels this issue deserves a CVE.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2018-1000030"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/python-2.7-readahead-not-thread-safe.html",
+        "PublicReleaseDate": "2017-09-20",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.15"
+    },
+    {
+        "Summary": "Expat 2.2.3",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expat-2.2.3.html",
+        "PublicReleaseDate": "2017-07-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.8  3.5.5  3.6.3  3.7.0"
+    },
+    {
+        "Summary": "Environment variables injection in subprocess on Windows",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/env-var-injection-subprocess-windows.html",
+        "PublicReleaseDate": "2017-06-22",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.7  3.5.4  3.6.2  3.7.0"
+    },
+    {
+        "Summary": "Expat 2.2.1",
+        "CVEs": {
+            "CVE-2012-0876": {
+                "Description": "The XML parser (xmlparse.c) in expat before 2.1.0 computes hash values without restricting the ability to trigger hash collisions predictably, which allows context-dependent attackers to cause a denial of service (CPU consumption) via an XML file with many identifiers with the same value.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2012-0876"
+            },
+            "CVE-2016-0718": {
+                "Description": "Expat allows context-dependent attackers to cause a denial of service (crash) or possibly execute arbitrary code via a malformed input document, which triggers a buffer overflow.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-0718"
+            },
+            "CVE-2016-9063": {
+                "Description": "An integer overflow during the parsing of XML using the Expat library. This vulnerability affects Firefox < 50.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-9063"
+            },
+            "CVE-2017-9233": {
+                "Description": "XML External Entity vulnerability in libexpat 2.2.0 and earlier (Expat XML Parser Library) allows attackers to put the parser in an infinite loop using a malformed external entity definition from an external DTD.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2017-9233"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expat-2.2.1.html",
+        "PublicReleaseDate": "2017-06-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.7  3.5.4  3.6.2  3.7.0"
+    },
+    {
+        "Summary": "PyString_DecodeEscape integer overflow",
+        "CVEs": {
+            "CVE-2017-1000158": {
+                "Description": "CPython (aka Python) up to 2.7.13 is vulnerable to an integer overflow in the PyString_DecodeEscape function in stringobject.c, resulting in heap-based buffer overflow (and possible arbitrary code execution)",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2017-1000158"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/pystring_decodeescape-integer-overflow.html",
+        "PublicReleaseDate": "2017-06-13",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.4.8  3.5.5"
+    },
+    {
+        "Summary": "bpo-30500: urllib connects to a wrong host",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-connects-wrong-host.html",
+        "PublicReleaseDate": "2017-05-29",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.7  3.5.4  3.6.2  3.7.0"
+    },
+    {
+        "Summary": "HTTP Header Injection (follow-up of CVE-2016-5699)",
+        "CVEs": {
+            "CVE-2019-9740": {
+                "Description": "An issue was discovered in urllib2 in Python 2.x through 2.7.16 and urllib in Python 3.x through 3.7.3. CRLF injection is possible if the attacker controls a url parameter, as demonstrated by the first argument to urllib.request.urlopen with \\r\\n (specifically in the query string after a ? character) followed by an HTTP header or a Redis command. This is fixed in: v2.7.17, v2.7.17rc1, v2.7.18, v2.7.18rc1; v3.5.10, v3.5.10rc1, v3.5.8, v3.5.8rc1, v3.5.8rc2, v3.5.9; v3.6.10, v3.6.10rc1, v3.6.11, v3.6.11rc1, v3.6.12, v3.6.9, v3.6.9rc1; v3.7.4, v3.7.4rc1, v3.7.4rc2, v3.7.5, v3.7.5rc1, v3.7.6, v3.7.6rc1, v3.7.7, v3.7.7rc1, v3.7.8, v3.7.8rc1, v3.7.9.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-9740"
+            },
+            "CVE-2019-9947": {
+                "Description": "An issue was discovered in urllib2 in Python 2.x through 2.7.16 and urllib in Python 3.x through 3.7.3. CRLF injection is possible if the attacker controls a url parameter, as demonstrated by the first argument to urllib.request.urlopen with \\r\\n (specifically in the path component of a URL that lacks a ? character) followed by an HTTP header or a Redis command. This is similar to the CVE-2019-9740 query string issue. This is fixed in: v2.7.17, v2.7.17rc1, v2.7.18, v2.7.18rc1; v3.5.10, v3.5.10rc1, v3.5.8, v3.5.8rc1, v3.5.8rc2, v3.5.9; v3.6.10, v3.6.10rc1, v3.6.11, v3.6.11rc1, v3.6.12, v3.6.9, v3.6.9rc1; v3.7.4, v3.7.4rc1, v3.7.4rc2, v3.7.5, v3.7.5rc1, v3.7.6, v3.7.6rc1, v3.7.7, v3.7.7rc1, v3.7.8, v3.7.8rc1, v3.7.9.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2019-9947"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/http-header-injection2.html",
+        "PublicReleaseDate": "2017-05-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.17  3.5.8  3.6.9  3.7.4  3.8.0"
+    },
+    {
+        "Summary": "Py_SetPath(): _Py_CheckPython3 uses uninitialized DLL path",
+        "CVEs": {
+            "CVE-2020-15523": {
+                "Description": "In Python 3.6 through 3.6.10, 3.7 through 3.7.8, 3.8 through 3.8.4rc1, and 3.9 through 3.9.0b4 on Windows, a Trojan horse python3.dll might be used in cases where CPython is embedded in a native application. This occurs because python3X.dll may use an invalid search path for python3.dll loading (after Py_SetPath has been used). NOTE: this issue CANNOT occur when using python.exe from a standard (non-embedded) Python installation on Windows.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2020-15523"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/pysetpath-python-dll-path.html",
+        "PublicReleaseDate": "2017-03-10",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.5.10  3.6.12  3.7.9  3.8.4  3.9.0"
+    },
+    {
+        "Summary": "urllib FTP protocol stream injection",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-ftp-stream-injection.html",
+        "PublicReleaseDate": "2017-02-20",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.7  3.5.4  3.6.3  3.7.0"
+    },
+    {
+        "Summary": "Expat 2.2 (Expat bug #537)",
+        "CVEs": {
+            "CVE-2016-0718": {
+                "Description": "Expat allows context-dependent attackers to cause a denial of service (crash) or possibly execute arbitrary code via a malformed input document, which triggers a buffer overflow.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-0718"
+            },
+            "CVE-2016-4472": {
+                "Description": "The overflow protection in Expat is removed by compilers with certain optimization settings, which allows remote attackers to cause a denial of service (crash) or possibly execute arbitrary code via crafted XML data. NOTE: this vulnerability exists because of an incomplete fix for CVE-2015-1283 and CVE-2015-2716.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-4472"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expat-2.2.html",
+        "PublicReleaseDate": "2017-02-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.3.7  3.4.7  3.5.4  3.6.2  3.7.0"
+    },
+    {
+        "Summary": "Zlib 1.2.11",
+        "CVEs": {
+            "CVE-2016-9840": {
+                "Description": "inftrees.c in zlib 1.2.8 might allow context-dependent attackers to have unspecified impact by leveraging improper pointer arithmetic.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-9840"
+            },
+            "CVE-2016-9841": {
+                "Description": "inffast.c in zlib 1.2.8 might allow context-dependent attackers to have unspecified impact by leveraging improper pointer arithmetic.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-9841"
+            },
+            "CVE-2016-9842": {
+                "Description": "The inflateMark function in inflate.c in zlib 1.2.8 might allow context-dependent attackers to have unspecified impact via vectors involving left shifts of negative integers.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-9842"
+            },
+            "CVE-2016-9843": {
+                "Description": "The crc32_big function in crc32.c in zlib 1.2.8 might allow context-dependent attackers to have unspecified impact via vectors involving big-endian CRC calculation.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-9843"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/zlib-1.2.11.html",
+        "PublicReleaseDate": "2017-01-05",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.14  3.4.8  3.5.4  3.6.1  3.7.0"
+    },
+    {
+        "Summary": "gettext.c2py()",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/gettext-c2py.html",
+        "PublicReleaseDate": "2016-10-30",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.13  3.3.7  3.4.6  3.5.3  3.6.0"
+    },
+    {
+        "Summary": "Sweet32 attack (DES, 3DES)",
+        "CVEs": {
+            "CVE-2016-2183": {
+                "Description": "The DES and Triple DES ciphers, as used in the TLS, SSH, and IPSec protocols and other protocols and products, have a birthday bound of approximately four billion blocks, which makes it easier for remote attackers to obtain cleartext data via a birthday attack against a long-duration encrypted session, as demonstrated by an HTTPS session using Triple DES in CBC mode, aka a \"Sweet32\" attack.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-2183"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/sweet32.html",
+        "PublicReleaseDate": "2016-08-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.13  3.4.7  3.5.3  3.6.0"
+    },
+    {
+        "Summary": "HTTPoxy attack",
+        "CVEs": {
+            "CVE-2016-1000110": {
+                "Description": "The CGIHandler class in Python before 2.7.12 does not protect against the HTTP_PROXY variable name clash in a CGI script, which could allow a remote attacker to redirect HTTP requests.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-1000110"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/httpoxy.html",
+        "PublicReleaseDate": "2016-07-18",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.13  3.3.7  3.4.6  3.5.3  3.6.0"
+    },
+    {
+        "Summary": "smtplib TLS stripping",
+        "CVEs": {
+            "CVE-2016-0772": {
+                "Description": "The smtplib library in CPython (aka Python) before 2.7.12, 3.x before 3.4.5, and 3.5.x before 3.5.2 does not return an error when StartTLS fails, which might allow man-in-the-middle attackers to bypass the TLS protections by leveraging a network position between the client and the registry to block the StartTLS command, aka a \"StartTLS stripping attack.\"",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-0772"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/smtplib-tls-stripping.html",
+        "PublicReleaseDate": "2016-06-11",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.12  3.3.7  3.4.5  3.5.2  3.6.0"
+    },
+    {
+        "Summary": "Issue #26657: HTTP server directory traversal",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/http-server-directory-traversal.html",
+        "PublicReleaseDate": "2016-03-28",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.12  3.3.7  3.4.7  3.5.2  3.6.0"
+    },
+    {
+        "Summary": "Issue #26556: Expat 2.1.1",
+        "CVEs": {
+            "CVE-2015-1283": {
+                "Description": "Multiple integer overflows in the XML_GetBuffer function in Expat through 2.1.0, as used in Google Chrome before 44.0.2403.89 and other products, allow remote attackers to cause a denial of service (heap-based buffer overflow) or possibly have unspecified other impact via crafted XML data, a related issue to CVE-2015-2716.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2015-1283"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expat-2.1.1.html",
+        "PublicReleaseDate": "2016-03-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.12  3.3.7  3.4.5  3.5.2  3.6.0"
+    },
+    {
+        "Summary": "zipimporter overflow",
+        "CVEs": {
+            "CVE-2016-5636": {
+                "Description": "Integer overflow in the get_data function in zipimport.c in CPython (aka Python) before 2.7.12, 3.x before 3.4.5, and 3.5.x before 3.5.2 allows remote attackers to have unspecified impact via a negative data size value, which triggers a heap-based buffer overflow.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-5636"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/zipimporter-overflow.html",
+        "PublicReleaseDate": "2016-01-21",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.12  3.3.7  3.4.5  3.5.2  3.6.0"
+    },
+    {
+        "Summary": "mailcap shell command injection",
+        "CVEs": {
+            "CVE-2015-20107": {
+                "Description": "In Python (aka CPython) up to 3.10.8, the mailcap module does not add escape characters into commands discovered in the system mailcap file. This may allow attackers to inject shell commands into applications that call mailcap.findmatch with untrusted input (if they lack validation of user-provided filenames or arguments). The fix is also back-ported to 3.7, 3.8, 3.9",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2015-20107"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/mailcap-shell-injection.html",
+        "PublicReleaseDate": "2015-08-02",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.7.16  3.8.16  3.9.16  3.10.8  3.11.0"
+    },
+    {
+        "Summary": "HTTP header injection",
+        "CVEs": {
+            "CVE-2016-5699": {
+                "Description": "CRLF injection vulnerability in the HTTPConnection.putheader function in urllib2 and urllib in CPython (aka Python) before 2.7.10 and 3.x before 3.4.4 allows remote attackers to inject arbitrary HTTP headers via CRLF sequences in a URL.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2016-5699"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/http-header-injection.html",
+        "PublicReleaseDate": "2014-11-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.10  3.3.7  3.4.4  3.5.0"
+    },
+    {
+        "Summary": "Validate TLS certificate",
+        "CVEs": {
+            "CVE-2014-9365": {
+                "Description": "The HTTP clients in the (1) httplib, (2) urllib, (3) urllib2, and (4) xmlrpclib libraries in CPython (aka Python) 2.x before 2.7.9 and 3.x before 3.4.3, when accessing an HTTPS URL, do not (a) check the certificate against a trust store or verify that the server hostname matches a domain name in the subject's (b) Common Name or (c) subjectAltName field of the X.509 certificate, which allows man-in-the-middle attackers to spoof SSL servers via an arbitrary valid certificate.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2014-9365"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/validate-tls-certificate.html",
+        "PublicReleaseDate": "2014-08-28",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.9  3.4.3  3.5.0"
+    },
+    {
+        "Summary": "buffer() integer overflows",
+        "CVEs": {
+            "CVE-2014-7185": {
+                "Description": "Integer overflow in bufferobject.c in Python before 2.7.8 allows context-dependent attackers to obtain sensitive information from process memory via a large size and offset in a \"buffer\" function.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2014-7185"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/buffer-integer-overflows.html",
+        "PublicReleaseDate": "2014-06-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.8"
+    },
+    {
+        "Summary": "JSONDecoder.raw_decode",
+        "CVEs": {
+            "CVE-2014-4616": {
+                "Description": "Array index error in the scanstring function in the _json module in Python 2.7 through 3.5 and simplejson before 2.6.1 allows context-dependent attackers to read arbitrary process memory via a negative index value in the idx argument to the raw_decode function.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2014-4616"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/jsondecoder-raw_decode.html",
+        "PublicReleaseDate": "2014-04-13",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.7  3.2.6  3.3.6  3.4.1  3.5.0"
+    },
+    {
+        "Summary": "os.makedirs() not thread-safe",
+        "CVEs": {
+            "CVE-2014-2667": {
+                "Description": "Race condition in the _get_masked_mode function in Lib/os.py in Python 3.2 through 3.5, when exist_ok is set to true and multiple threads are used, might allow local users to bypass intended file permissions by leveraging a separate application vulnerability before the umask has been set to the expected value.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2014-2667"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/os-makedirs-not-thread-safe.html",
+        "PublicReleaseDate": "2014-03-28",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.2.6  3.3.6  3.4.1  3.5.0"
+    },
+    {
+        "Summary": "socket.recvfrom_into() overflow",
+        "CVEs": {
+            "CVE-2014-1912": {
+                "Description": "Buffer overflow in the socket.recvfrom_into function in Modules/socketmodule.c in Python 2.5 before 2.7.7, 3.x before 3.3.4, and 3.4.x before 3.4rc1 allows remote attackers to execute arbitrary code via a crafted string.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2014-1912"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/socket-recvfrom_into-overflow.html",
+        "PublicReleaseDate": "2014-01-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.7  3.2.6  3.3.4  3.4.0"
+    },
+    {
+        "Summary": "zipfile DoS using invalid file size",
+        "CVEs": {
+            "CVE-2013-7338": {
+                "Description": "Python before 3.3.4 RC1 allows remote attackers to cause a denial of service (infinite loop and CPU consumption) via a file size value larger than the size of the zip file to the (1) ZipExtFile.read, (2) ZipExtFile.read(n), (3) ZipExtFile.readlines, (4) ZipFile.extract, or (5) ZipFile.extractall function.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-7338"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/zipfile-file-size-dos.html",
+        "PublicReleaseDate": "2013-12-27",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.3.4  3.4.0"
+    },
+    {
+        "Summary": "CGI directory traversal (URL parsing)",
+        "CVEs": {},
+        "Advisory link": "https://python-security.readthedocs.io/vuln/cgi-directory-traversal-url-parsing.html",
+        "PublicReleaseDate": "2013-10-29",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.6  3.2.6  3.3.4  3.4.0"
+    },
+    {
+        "Summary": "ssl: NULL in subjectAltNames",
+        "CVEs": {
+            "CVE-2013-4238": {
+                "Description": "The ssl.match_hostname function in the SSL module in Python 2.6 through 3.4 does not properly handle a '\\0' character in a domain name in the Subject Alternative Name field of an X.509 certificate, which allows man-in-the-middle attackers to spoof arbitrary SSL servers via a crafted certificate issued by a legitimate Certification Authority, a related issue to CVE-2009-2408.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-4238"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-null-subjectaltnames.html",
+        "PublicReleaseDate": "2013-06-27",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.9  2.7.6  3.2.6  3.3.3  3.4.0"
+    },
+    {
+        "Summary": "ssl.match_hostname() IDNA issue",
+        "CVEs": {
+            "CVE-2013-7440": {
+                "Description": "The ssl.match_hostname function in CPython (aka Python) before 2.7.9 and 3.x before 3.3.3 does not properly handle wildcards in hostnames, which might allow man-in-the-middle attackers to spoof servers via a crafted certificate.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-7440"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-match_hostname-idna.html",
+        "PublicReleaseDate": "2013-05-17",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.3.3  3.4.0"
+    },
+    {
+        "Summary": "ssl.match_hostname() wildcard DoS",
+        "CVEs": {
+            "CVE-2013-2099": {
+                "Description": "Algorithmic complexity vulnerability in the ssl.match_hostname function in Python 3.2.x, 3.3.x, and earlier, and unspecified versions of python-backports-ssl_match_hostname as used for older Python versions, allows remote attackers to cause a denial of service (CPU consumption) via multiple wildcard characters in the common name in a certificate.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-2099"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-match_hostname-wildcard-dos.html",
+        "PublicReleaseDate": "2013-05-15",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.2.6  3.3.3  3.4.0"
+    },
+    {
+        "Summary": "Limit imaplib.IMAP4_SSL.readline()",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/limit-imap4_ssl-readline.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.16"
+    },
+    {
+        "Summary": "ftplib unlimited read",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ftplib-unlimited-read.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.6  3.2.6  3.3.3  3.4.0"
+    },
+    {
+        "Summary": "nntplib unlimited read",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/nntplib-unlimited-read.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.9  2.7.6  3.2.6  3.3.7  3.4.3  3.5.0"
+    },
+    {
+        "Summary": "poplib unlimited read",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/poplib-unlimited-read.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.9  3.2.6  3.3.7  3.4.3  3.5.0"
+    },
+    {
+        "Summary": "smtplib unlimited read",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/smtplib-unlimited-read.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.9  3.2.6  3.3.7  3.4.3  3.5.0"
+    },
+    {
+        "Summary": "xmlrpc gzip unlimited read",
+        "CVEs": {
+            "CVE-2013-1753": {
+                "Description": "The gzip_decode function in the xmlrpc client library in Python 3.4 and earlier allows remote attackers to cause a denial of service (memory consumption) via a crafted HTTP request.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1753"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/xmlrpc-gzip-unlimited-read.html",
+        "PublicReleaseDate": "2012-09-25",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.9  3.3.7  3.4.3  3.5.0"
+    },
+    {
+        "Summary": "Hash function not randomized properly",
+        "CVEs": {
+            "CVE-2013-7040": {
+                "Description": "Python 2.7 before 3.4 only uses the last eight bits of the prefix to randomize hash values, which causes it to compute hash values without restricting the ability to trigger hash collisions predictably and makes it easier for context-dependent attackers to cause a denial of service (CPU consumption) via crafted input to an application that maintains a hash table.  NOTE: this vulnerability exists because of an incomplete fix for CVE-2012-1150.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-7040"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/hash-function-not-randomized-properly.html",
+        "PublicReleaseDate": "2012-04-19",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "3.4.0"
+    },
+    {
+        "Summary": "Vulnerability in the utf-16 decoder after error handling",
+        "CVEs": {
+            "CVE-2012-2135": {
+                "Description": "The utf-16 decoder in Python 3.1 through 3.3 does not update the aligned_end variable after calling the unicode_decode_call_errorhandler function, which allows remote attackers to obtain sensitive information (process memory) or cause a denial of service (memory corruption and crash) via unspecified vectors.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2012-2135"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/utf-16-decoder-after-error-handling.html",
+        "PublicReleaseDate": "2012-04-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.4  3.2.4  3.3.0"
+    },
+    {
+        "Summary": "XML-RPC DoS",
+        "CVEs": {
+            "CVE-2012-0845": {
+                "Description": "SimpleXMLRPCServer.py in SimpleXMLRPCServer in Python before 2.6.8, 2.7.x before 2.7.3, 3.x before 3.1.5, and 3.2.x before 3.2.3 allows remote attackers to cause a denial of service (infinite loop and CPU consumption) via an XML-RPC POST request that contains a smaller amount of data than specified by the Content-Length header.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2012-0845"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/xmlrpc-dos.html",
+        "PublicReleaseDate": "2012-02-13",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.8  2.7.3  3.1.5  3.2.3  3.3.0"
+    },
+    {
+        "Summary": "ssl CBC IV attack",
+        "CVEs": {
+            "CVE-2011-3389": {
+                "Description": "The SSL protocol, as used in certain configurations in Microsoft Windows and Microsoft Internet Explorer, Mozilla Firefox, Google Chrome, Opera, and other products, encrypts data by using CBC mode with chained initialization vectors, which allows man-in-the-middle attackers to obtain plaintext HTTP headers via a blockwise chosen-boundary attack (BCBA) on an HTTPS session, in conjunction with JavaScript code that uses (1) the HTML5 WebSocket API, (2) the Java URLConnection API, or (3) the Silverlight WebClient API, aka a \"BEAST\" attack.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2011-3389"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/ssl-cbc-iv-attack.html",
+        "PublicReleaseDate": "2012-01-27",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.8  2.7.3  3.1.5  3.2.3  3.3.0"
+    },
+    {
+        "Summary": "Hash DoS",
+        "CVEs": {
+            "CVE-2012-1150": {
+                "Description": "Python before 2.6.8, 2.7.x before 2.7.3, 3.x before 3.1.5, and 3.2.x before 3.2.3 computes hash values without restricting the ability to trigger hash collisions predictably, which allows context-dependent attackers to cause a denial of service (CPU consumption) via crafted input to an application that maintains a hash table.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2012-1150"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/hash-dos.html",
+        "PublicReleaseDate": "2011-12-28",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.8  2.7.3  3.1.5  3.2.3  3.3.0"
+    },
+    {
+        "Summary": "pypirc created insecurely",
+        "CVEs": {
+            "CVE-2011-4944": {
+                "Description": "Python 2.6 through 3.2 creates ~/.pypirc with world-readable permissions before changing them after data has been written, which introduces a race condition that allows local users to obtain a username and password by reading this file.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2011-4944"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/pypirc-created-insecurely.html",
+        "PublicReleaseDate": "2011-11-30",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.4  3.2.4  3.3.1  3.4.0"
+    },
+    {
+        "Summary": "urllib redirect",
+        "CVEs": {
+            "CVE-2011-1521": {
+                "Description": "The urllib and urllib2 modules in Python 2.x before 2.7.2 and 3.x before 3.2.1 process Location headers that specify redirection to file: URLs, which makes it easier for remote attackers to obtain sensitive information or cause a denial of service (resource consumption) via a crafted URL, as demonstrated by the file:///etc/passwd and file:///dev/zero URLs.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2011-1521"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/urllib-redirect.html",
+        "PublicReleaseDate": "2011-03-24",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.5.6  2.6.7  2.7.2  3.1.4  3.2.1  3.3.0"
+    },
+    {
+        "Summary": "SimpleHTTPServer UTF-7",
+        "CVEs": {
+            "CVE-2011-4940": {
+                "Description": "The list_directory function in Lib/SimpleHTTPServer.py in SimpleHTTPServer in Python before 2.5.6c1, 2.6.x before 2.6.7 rc2, and 2.7.x before 2.7.2 does not place a charset parameter in the Content-Type HTTP header, which makes it easier for remote attackers to conduct cross-site scripting (XSS) attacks against Internet Explorer 7 via UTF-7 encoding.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2011-4940"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/simplehttpserver-utf-7.html",
+        "PublicReleaseDate": "2011-03-08",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.5.6  2.6.7  2.7.2  3.2.4  3.3.1  3.4.0"
+    },
+    {
+        "Summary": "audioop integer overflows",
+        "CVEs": {
+            "CVE-2010-1634": {
+                "Description": "Multiple integer overflows in audioop.c in the audioop module in Python 2.6, 2.7, 3.1, and 3.2 allow context-dependent attackers to cause a denial of service (application crash) via a large fragment, as demonstrated by a call to audioop.lin2lin with a long string in the first argument, leading to a buffer overflow. NOTE: this vulnerability exists because of an incorrect fix for CVE-2008-3143.5.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-1634"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/audioop-integer-overflows.html",
+        "PublicReleaseDate": "2010-05-10",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.6  2.7.0  3.1.3  3.2.0"
+    },
+    {
+        "Summary": "audioop input validation",
+        "CVEs": {
+            "CVE-2010-2089": {
+                "Description": "The audioop module in Python 2.7 and 3.2 does not verify the relationships between size arguments and byte string lengths, which allows context-dependent attackers to cause a denial of service (memory corruption and application crash) via crafted arguments, as demonstrated by a call to audioop.reverse with a one-byte string, a different vulnerability than CVE-2010-1634.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-2089"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/audioop-input-validation.html",
+        "PublicReleaseDate": "2010-01-11",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.6  2.7.2  3.1.3  3.2.0"
+    },
+    {
+        "Summary": "httplib unlimited read",
+        "CVEs": {
+            "CVE-2013-1752": {
+                "Description": "** REJECT ** Various versions of Python do not properly restrict readline calls, which allows remote attackers to cause a denial of service (memory consumption) via a long string, related to (1) httplib - fixed in 2.7.4, 2.6.9, and 3.3.3; (2) ftplib - fixed in 2.7.6, 2.6.9, 3.3.3; (3) imaplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; (4) nntplib - fixed in 2.7.6, 2.6.9, 3.3.3; (5) poplib - not yet fixed in 2.7.x, fixed in 2.6.9, 3.3.3; and (6) smtplib - not yet fixed in 2.7.x, fixed in 2.6.9, not yet fixed in 3.3.x. NOTE: this was REJECTed because it is incompatible with CNT1 \"Independently Fixable\" in the CVE Counting Decisions.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2013-1752"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/httplib-unlimited-read.html",
+        "PublicReleaseDate": "2009-08-28",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.2  3.1.4  3.2.0"
+    },
+    {
+        "Summary": "smtpd accept bug and race condition",
+        "CVEs": {
+            "CVE-2010-3492": {
+                "Description": "The asyncore module in Python before 3.2 does not properly handle unsuccessful calls to the accept function, and does not have accompanying documentation describing how daemon applications should handle unsuccessful calls to the accept function, which makes it easier for remote attackers to conduct denial of service attacks that terminate these applications via network connections.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-3492"
+            },
+            "CVE-2010-3493": {
+                "Description": "Multiple race conditions in smtpd.py in the smtpd module in Python 2.6, 2.7, 3.1, and 3.2 alpha allow remote attackers to cause a denial of service (daemon outage) by establishing and then immediately closing a TCP connection, leading to the accept function having an unexpected return value of None, an unexpected value of None for the address, or an ECONNABORTED, EAGAIN, or EWOULDBLOCK error, or the getpeername function having an ENOTCONN error, a related issue to CVE-2010-3492.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-3493"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/smtpd-accept-bug-and-race-condition.html",
+        "PublicReleaseDate": "2009-08-14",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.1  3.1.3  3.2.0"
+    },
+    {
+        "Summary": "Multiple integer overflows (Apple)",
+        "CVEs": {
+            "CVE-2008-1679": {
+                "Description": "Multiple integer overflows in imageop.c in Python before 2.5.3 allow context-dependent attackers to cause a denial of service (crash) and possibly execute arbitrary code via crafted images that trigger heap-based buffer overflows.  NOTE: this issue is due to an incomplete fix for CVE-2007-4965.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-1679"
+            },
+            "CVE-2008-1721": {
+                "Description": "Integer signedness error in the zlib extension module in Python 2.5.2 and earlier allows remote attackers to execute arbitrary code via a negative signed integer, which triggers insufficient memory allocation and a buffer overflow.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-1721"
+            },
+            "CVE-2008-1887": {
+                "Description": "Python 2.5.2 and earlier allows context-dependent attackers to execute arbitrary code via multiple vectors that cause a negative size value to be provided to the PyString_FromStringAndSize function, which allocates less memory than expected when assert() is disabled and triggers a buffer overflow.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-1887"
+            },
+            "CVE-2008-2315": {
+                "Description": "Multiple integer overflows in Python 2.5.2 and earlier allow context-dependent attackers to have an unknown impact via vectors related to the (1) stringobject, (2) unicodeobject, (3) bufferobject, (4) longobject, (5) tupleobject, (6) stropmodule, (7) gcmodule, and (8) mmapmodule modules.  NOTE: The expandtabs integer overflows in stringobject and unicodeobject in 2.5.2 are covered by CVE-2008-5031.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-2315"
+            },
+            "CVE-2008-2316": {
+                "Description": "Integer overflow in _hashopenssl.c in the hashlib module in Python 2.5.2 and earlier might allow context-dependent attackers to defeat cryptographic digests, related to \"partial hashlib hashing of data exceeding 4GB.\"",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-2316"
+            },
+            "CVE-2008-3142": {
+                "Description": "Multiple buffer overflows in Python 2.5.2 and earlier on 32bit platforms allow context-dependent attackers to cause a denial of service (crash) or have unspecified other impact via a long string that leads to incorrect memory allocation during Unicode string processing, related to the unicode_resize function and the PyMem_RESIZE macro.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-3142"
+            },
+            "CVE-2008-3144": {
+                "Description": "Multiple integer overflows in the PyOS_vsnprintf function in Python/mysnprintf.c in Python 2.5.2 and earlier allow context-dependent attackers to cause a denial of service (memory corruption) or have unspecified other impact via crafted input to string formatting operations.  NOTE: the handling of certain integer values is also affected by related integer underflows and an off-by-one error.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-3144"
+            },
+            "CVE-2008-4864": {
+                "Description": "Multiple integer overflows in imageop.c in the imageop module in Python 1.5.2 through 2.5.1 allow context-dependent attackers to break out of the Python VM and execute arbitrary code via large integer values in certain arguments to the crop function, leading to a buffer overflow, a different vulnerability than CVE-2007-4965 and CVE-2008-1679.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-4864"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/multiple-integer-overflows-apple.html",
+        "PublicReleaseDate": "2008-07-31",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.6.0  3.0.0"
+    },
+    {
+        "Summary": "Multiple integer overflows (Google)",
+        "CVEs": {
+            "CVE-2008-3143": {
+                "Description": "Multiple integer overflows in Python before 2.5.2 might allow context-dependent attackers to have an unknown impact via vectors related to (1) Include/pymem.h; (2) _csv.c, (3) _struct.c, (4) arraymodule.c, (5) audioop.c, (6) binascii.c, (7) cPickle.c, (8) cStringIO.c, (9) cjkcodecs/multibytecodec.c, (10) datetimemodule.c, (11) md5.c, (12) rgbimgmodule.c, and (13) stropmodule.c in Modules/; (14) bufferobject.c, (15) listobject.c, and (16) obmalloc.c in Objects/; (17) Parser/node.c; and (18) asdl.c, (19) ast.c, (20) bltinmodule.c, and (21) compile.c in Python/, as addressed by \"checks for integer overflows, contributed by Google.\"",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-3143"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/multiple-integer-overflows-google.html",
+        "PublicReleaseDate": "2008-04-11",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.5.3  2.6.0  3.0.0"
+    },
+    {
+        "Summary": "expandtab() integer overflow",
+        "CVEs": {
+            "CVE-2008-5031": {
+                "Description": "Multiple integer overflows in Python 2.2.3 through 2.5.1, and 2.6, allow context-dependent attackers to have an unknown impact via a large integer value in the tabsize argument to the expandtabs method, as implemented by (1) the string_expandtabs function in Objects/stringobject.c and (2) the unicode_expandtabs function in Objects/unicodeobject.c.  NOTE: this vulnerability reportedly exists because of an incomplete fix for CVE-2008-2315.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2008-5031"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/expandtab-integer-overflow.html",
+        "PublicReleaseDate": "2008-03-11",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.5.3  2.6.0  3.0.0"
+    },
+    {
+        "Summary": "CGI directory traversal (is_cgi() function)",
+        "CVEs": {
+            "CVE-2011-1015": {
+                "Description": "The is_cgi method in CGIHTTPServer.py in the CGIHTTPServer module in Python 2.5, 2.6, and 3.0 allows remote attackers to read script source code via an HTTP GET request that lacks a / (slash) character at the beginning of the URI.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2011-1015"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/cgi-directory-traversal-is_cgi.html",
+        "PublicReleaseDate": "2008-03-07",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.7.0  3.2.4  3.3.1  3.4.0"
+    },
+    {
+        "Summary": "rgbimg and imageop overflows",
+        "CVEs": {
+            "CVE-2007-4965": {
+                "Description": "Multiple integer overflows in the imageop module in Python 2.5.1 and earlier allow context-dependent attackers to cause a denial of service (application crash) and possibly obtain sensitive information (memory contents) via crafted arguments to (1) the tovideo method, and unspecified other vectors related to (2) imageop.c, (3) rbgimgmodule.c, and other files, which trigger heap-based buffer overflows.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2007-4965"
+            },
+            "CVE-2009-4134": {
+                "Description": "Buffer underflow in the rgbimg module in Python 2.5 allows remote attackers to cause a denial of service (application crash) via a large ZSIZE value in a black-and-white (aka B/W) RGB image that triggers an invalid pointer dereference.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2009-4134"
+            },
+            "CVE-2010-1449": {
+                "Description": "Integer overflow in rgbimgmodule.c in the rgbimg module in Python 2.5 allows remote attackers to have an unspecified impact via a large image that triggers a buffer overflow. NOTE: this vulnerability exists because of an incomplete fix for CVE-2008-3143.12.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-1449"
+            },
+            "CVE-2010-1450": {
+                "Description": "Multiple buffer overflows in the RLE decoder in the rgbimg module in Python 2.5 allow remote attackers to have an unspecified impact via an image file containing crafted data that triggers improper processing within the (1) longimagedata or (2) expandrow function.",
+                "Source": "https://nvd.nist.gov/vuln/detail/CVE-2010-1450"
+            }
+        },
+        "Advisory link": "https://python-security.readthedocs.io/vuln/rgbimg-imageop-overflows.html",
+        "PublicReleaseDate": "2007-09-16",
+        "Vulnerable version": "\u2013",
+        "Files_updated": "2.5.3  2.6.0"
+    }
+]
