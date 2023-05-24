@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo ">> Cloning from Github started "
+pwd
+declare -a StringArray=("project A" "project B" "project C")
+
+for val in ${StringArray[@]}; do
+ echo $val
+ git clone git@git.com/$val.git 
+done
+echo ">> Cloning from the GitLab completed"
+
+echo ">> OWASP Dependency Check setup process started"
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.18.0.10-1.el7_9.x86_64/
+echo ">> Download and install the latest version of the OWASP dependency-check tool"
+#Commented the line for now as we are testing with 8.2.1 release version which is stable for C projects.
+#LATEST_RELEASE_URL=$(curl -s https://api.github.com/repos/jeremylong/DependencyCheck/releases/latest | grep -o -E "https://github.com/jeremylong/DependencyCheck/releases/download/.*?-release.zip")
+curl -LO https://github.com/jeremylong/DependencyCheck/releases/download/v8.2.1/dependency-check-8.2.1-release.zip
+unzip dependency-check-8.2.1-release.zip
+chmod +x dependency-check
+cd dependency-check/bin
+chmod +x dependency-check.sh
+cd ../..
+echo ">> OWASP Dependency Check setup process completed"
+
+for dir in ${StringArray[@]}/; do
+   	echo ">> Current directory is: $dir"
+    projectname=$(echo "$dir" | tr -d '/')
+    if [ -d "$projectname/src" ]; then
+    	echo ">> Inside the src directory is: $projectname/src"
+    	# Print the name of the directory if the "src" folder is present
+    	/var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/dependency-check/bin/dependency-check.sh --scan $dir/src --format HTML --project dependency-$projectname --out /var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/OWASP_Report/$projectname --enableExperimental
+    else
+    	echo ">> Initiate the OWASP Dependency Scan"
+    	/var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/dependency-check/bin/dependency-check.sh --scan $dir --format HTML --project dependency-$projectname --out /var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/OWASP_Report/$projectname --enableExperimental
+    	#cp /var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/$projectname/$projectname.html /var/lib/jenkins/workspace/OWASP_Dependency_Check_C_Projects/OWASP_Report
+    	echo ">> OWASP Dependency Scan completed successfully"
+    fi
+done
+
+echo ">> Cleaning the workspace started"
+rm -rf dependency-check-8.2.1-release.zip dependency-check project A project B project C
+echo ">> Cleaning the workspace finished"
